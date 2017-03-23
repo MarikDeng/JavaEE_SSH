@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="hibernateSession" class="db.HibernateSession" />
+	<bean id="session" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">  
+      <property name="targetObject">  
+        <ref local="hibernateSession"/>  
+      </property>  
+      <property name="targetMethod">  
+        <value>getInstance</value>  
+      </property>
+    </bean>
+       
+    <bean id="dbOperation" class="dao.DBOperation" abstract="true">
+		<constructor-arg index="0" type="org.hibernate.Session" ref="session"></constructor-arg>
+	</bean>
+	<bean id="bookInsert" class="dao.Insert" parent="dbOperation">
+		<constructor-arg index="0" type="org.hibernate.Session" ref="session"></constructor-arg>
+	</bean>
+	<bean id="bookDelete" class="dao.Delete" parent="dbOperation">
+		<constructor-arg index="0" type="org.hibernate.Session" ref="session"></constructor-arg>
+	</bean>
+	<bean id="bookQuery" class="dao.Query" parent="dbOperation">
+		<constructor-arg index="0" type="org.hibernate.Session" ref="session"></constructor-arg>
+	</bean>
+	<bean id="bookUpdate" class="dao.Update" parent="dbOperation">
+		<constructor-arg index="0" type="org.hibernate.Session" ref="session"></constructor-arg>
+	</bean>
+	
+	<bean id="bookDao" class="dao.BookDao">
+		<property  name="hibernateSession" ref="session"></property>
+	</bean>
+	
+</beans>

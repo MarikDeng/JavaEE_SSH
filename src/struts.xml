@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<package name="default" extends="struts-default">
+	<action name="doInsert" class = "actions.BookAction" method="doInsert">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	<action name="doDelete" class = "actions.BookAction" method="doDelete">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	<action name="doUpdate" class = "actions.BookAction" method="doUpdate">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	<action name="doQuery" class = "actions.BookAction" method="doQuery">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	
+	<action name="doInsert2" class = "actions.BookAction2" method="doInsert">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	<action name="doDelete2" class = "actions.BookAction2" method="doDelete">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	<action name="doUpdate2" class = "actions.BookAction2" method="doUpdate">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	<action name="doQuery2" class = "actions.BookAction2" method="doQuery">
+		<result name = "success">/success.jsp</result>
+		<result name = "fail">/fail.jsp</result>
+	</action>
+	
+	
+</package>
+
+</struts>    
